@@ -83,27 +83,30 @@ handleCloseModal();
   }, [notates]);
   return (
     <Container>
-
-<Form className="d-flex justify-content-center align-items-center flex-wrap">
+{tasks.length > 0 && <Form className="d-flex justify-content-center align-items-center flex-wrap">
         <Form.Check
           type="radio"
           label="Done"
           name="status"
           onChange={()=> setFilter('Done')}
+          className={styles.checkbox_filters}
         />
         <Form.Check
           type="radio"
           label="Not Done"
           name="status"
           onChange={()=> setFilter('Not Done')}
+          className={styles.checkbox_filters}
         />
         <Form.Check
           type="radio"
           label="All"
           name="status"
           onChange={()=> setFilter('All')}
+          className={styles.checkbox_filters}
         />
-      </Form>
+      </Form>}
+
 
 
 
