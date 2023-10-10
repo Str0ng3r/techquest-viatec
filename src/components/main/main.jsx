@@ -20,47 +20,38 @@ export const Main = () => {
   const [currentName, setCurrentName] = useState(null);
   const [currentDescription, setCurrentDescription] = useState(null);
   const [currentStatus, setCurrentStatus] = useState(null);
-  const [filter,setFilter] = useState('All')
+  const [filter, setFilter] = useState("All");
 
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
-
-
-
   const editCardFunc = () => {
-    const cardIndex = tasks.findIndex(el => el.id === currentId);
-
-
+    const cardIndex = tasks.findIndex((el) => el.id === currentId);
 
     if (currentName === null || currentName === "") {
-      alert('Please write a name for the task');
+      alert("Please write a name for the task");
       return;
     }
 
-  
-      const updatedCard = {
-        name: currentName,
-        description: currentDescription,
-        status: currentStatus,
-        id: currentId
-      };
+    const updatedCard = {
+      name: currentName,
+      description: currentDescription,
+      status: currentStatus,
+      id: currentId,
+    };
 
+    const updatedTasks = [
+      ...tasks.slice(0, cardIndex),
+      updatedCard,
+      ...tasks.slice(cardIndex + 1),
+    ];
 
+    dispatch(setUpdateNotate(updatedTasks));
 
-const updatedTasks = [
-  ...tasks.slice(0, cardIndex),
-  updatedCard,
-  ...tasks.slice(cardIndex + 1)
-];
-
-dispatch(setUpdateNotate(updatedTasks))
-
-handleCloseModal();
-    }
-
+    handleCloseModal();
+  };
 
   const modalFunction = (id) => {
     const curCard = tasks.find((el) => el.id === id);
@@ -70,7 +61,6 @@ handleCloseModal();
     setCurrentStatus(curCard.status);
     handleShowModal();
   };
-
 
   const dispatch = useDispatch();
   const deleteElement = (id) => {
@@ -83,32 +73,31 @@ handleCloseModal();
   }, [notates]);
   return (
     <Container>
-{tasks.length > 0 && <Form className="d-flex justify-content-center align-items-center flex-wrap">
-        <Form.Check
-          type="radio"
-          label="Done"
-          name="status"
-          onChange={()=> setFilter('Done')}
-          className={styles.checkbox_filters}
-        />
-        <Form.Check
-          type="radio"
-          label="Not Done"
-          name="status"
-          onChange={()=> setFilter('Not Done')}
-          className={styles.checkbox_filters}
-        />
-        <Form.Check
-          type="radio"
-          label="All"
-          name="status"
-          onChange={()=> setFilter('All')}
-          className={styles.checkbox_filters}
-        />
-      </Form>}
-
-
-
+      {tasks.length > 0 && (
+        <Form className="d-flex justify-content-center align-items-center flex-wrap">
+          <Form.Check
+            type="radio"
+            label="Done"
+            name="status"
+            onChange={() => setFilter("Done")}
+            className={styles.checkbox_filters}
+          />
+          <Form.Check
+            type="radio"
+            label="Not Done"
+            name="status"
+            onChange={() => setFilter("Not Done")}
+            className={styles.checkbox_filters}
+          />
+          <Form.Check
+            type="radio"
+            label="All"
+            name="status"
+            onChange={() => setFilter("All")}
+            className={styles.checkbox_filters}
+          />
+        </Form>
+      )}
 
       <ListGroup
         horizontal
@@ -120,53 +109,56 @@ handleCloseModal();
         }}
       >
         {tasks
-          .filter(
-            (el) => {
-              if (filter === 'Done') return el.status === 'Done';
-              if (filter === 'Not Done') return el.status === 'Not Done';
-              return true;
-            }
-          ).map((el) => (
-          <ListGroup.Item key={el.id} className={styles.card_item}>
-            <Card style={{ width: "18rem", paddingTop: "20px" }}>
-              <Card.Body>
-                <div className={styles.div_buttons}>
-                  <button
-                    className={styles.button_edit}
-                    data-id={el.id}
-                    onClick={(evt) => {
-                      deleteElement(evt.currentTarget.dataset.id);
-                    }}
-                  >
-                    <img
-                      src={del}
-                      alt="delete"
-                      className={styles.img_service}
-                    />
-                  </button>
-                  <button
-                    className={styles.button_delete}
-                    data-id={el.id}
-                    onClick={(evt) => {
-                      modalFunction(evt.currentTarget.dataset.id);
-                    }}
-                  >
-                    <img src={edit} alt="edit" className={styles.img_service} />
-                  </button>
-                </div>
-                <Card.Title>{el.name}</Card.Title>
-                <Card.Text>{el.description}</Card.Text>
-                <div
-                  className={
-                    el.status === "Done"
-                      ? styles.div_status_undeline_done
-                      : styles.div_status_undeline_notdone
-                  }
-                ></div>
-              </Card.Body>
-            </Card>
-          </ListGroup.Item>
-        ))}
+          .filter((el) => {
+            if (filter === "Done") return el.status === "Done";
+            if (filter === "Not Done") return el.status === "Not Done";
+            return true;
+          })
+          .map((el) => (
+            <ListGroup.Item key={el.id} className={styles.card_item}>
+              <Card style={{ width: "18rem", paddingTop: "20px" }}>
+                <Card.Body>
+                  <div className={styles.div_buttons}>
+                    <button
+                      className={styles.button_edit}
+                      data-id={el.id}
+                      onClick={(evt) => {
+                        deleteElement(evt.currentTarget.dataset.id);
+                      }}
+                    >
+                      <img
+                        src={del}
+                        alt="delete"
+                        className={styles.img_service}
+                      />
+                    </button>
+                    <button
+                      className={styles.button_delete}
+                      data-id={el.id}
+                      onClick={(evt) => {
+                        modalFunction(evt.currentTarget.dataset.id);
+                      }}
+                    >
+                      <img
+                        src={edit}
+                        alt="edit"
+                        className={styles.img_service}
+                      />
+                    </button>
+                  </div>
+                  <Card.Title>{el.name}</Card.Title>
+                  <Card.Text>{el.description}</Card.Text>
+                  <div
+                    className={
+                      el.status === "Done"
+                        ? styles.div_status_undeline_done
+                        : styles.div_status_undeline_notdone
+                    }
+                  ></div>
+                </Card.Body>
+              </Card>
+            </ListGroup.Item>
+          ))}
       </ListGroup>
 
       <Modal show={showModal} onHide={handleCloseModal}>
@@ -211,7 +203,7 @@ handleCloseModal();
                   id="radio"
                   name="status"
                   label="Done"
-                  checked={currentStatus === "Done"} // Проверка на выбор Done
+                  checked={currentStatus === "Done"}
                   onChange={() => setCurrentStatus("Done")}
                 />
                 <Form.Check
@@ -227,8 +219,12 @@ handleCloseModal();
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>Cancel</Button>
-          <Button variant="primary" onClick={editCardFunc}>Edit notate</Button>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={editCardFunc}>
+            Edit notate
+          </Button>
         </Modal.Footer>
       </Modal>
     </Container>

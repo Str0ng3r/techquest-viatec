@@ -72,7 +72,7 @@ export const Header = () => {
                   id="radio"
                   name="status"
                   label="Done"
-                  checked={status === "Done"} // Проверка на выбор Done
+                  checked={status === "Done"}
                   onChange={() => setStatus("Done")}
                 />
                 <Form.Check
@@ -80,7 +80,7 @@ export const Header = () => {
                   id="radio"
                   name="status"
                   label="Not Done"
-                  checked={status === "Not Done"} // Проверка на выбор Not Done
+                  checked={status === "Not Done"}
                   onChange={() => setStatus("Not Done")}
                 />
               </div>
@@ -102,16 +102,14 @@ export const Header = () => {
           <Button
             variant="primary"
             onClick={() => {
-
-
               if (nameTask === null || nameTask === "") {
-                alert('Please write a name for the task');
+                alert("Please write a name for the task");
                 return;
               }
-if(status === '' || status === null){
-  alert('Plz choose status')
-  return
-}
+              if (status === "" || status === null) {
+                alert("Plz choose status");
+                return;
+              }
 
               dispatch(
                 setNotate({
