@@ -31,6 +31,14 @@ export const Main = () => {
 
   const editCardFunc = () => {
     const cardIndex = tasks.findIndex(el => el.id === currentId);
+
+
+
+    if (currentName === null || currentName === "") {
+      alert('Please write a name for the task');
+      return;
+    }
+
   
       const updatedCard = {
         name: currentName,
@@ -59,7 +67,6 @@ handleCloseModal();
     setCurrentDescription(curCard.description);
     setCurrentName(curCard.name);
     setCurrentStatus(curCard.status);
-    console.log(curCard);
     handleShowModal();
   };
 
@@ -72,7 +79,6 @@ handleCloseModal();
 
   useEffect(() => {
     setTasks(notates);
-    console.log(notates);
   }, [notates]);
   return (
     <Container>

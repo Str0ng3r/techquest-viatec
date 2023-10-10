@@ -47,7 +47,6 @@ export const Header = () => {
                 className={styles.input_form}
                 onChange={(evt) => {
                   setNameTask(evt.currentTarget.value);
-                  console.log(nameTask);
                 }}
               />
             </label>
@@ -62,7 +61,6 @@ export const Header = () => {
                 className={styles.area_form}
                 onChange={(evt) => {
                   setDescription(evt.currentTarget.value);
-                  console.log(description);
                 }}
               ></textarea>
             </label>
@@ -104,6 +102,17 @@ export const Header = () => {
           <Button
             variant="primary"
             onClick={() => {
+
+
+              if (nameTask === null || nameTask === "") {
+                alert('Please write a name for the task');
+                return;
+              }
+if(status === '' || status === null){
+  alert('Plz choose status')
+  return
+}
+
               dispatch(
                 setNotate({
                   name: nameTask,
@@ -112,6 +121,7 @@ export const Header = () => {
                   id: nanoid(),
                 })
               );
+
               handleCloseModal();
               setDescription(null);
               setNameTask(null);
