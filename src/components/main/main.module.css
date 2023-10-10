@@ -1,0 +1,24 @@
+.div_status_undeline_done{
+    width: 100%;
+    border-radius: 5px;
+    height: 4px;
+background-color: chartreuse;
+}.div_status_undeline_notdone {
+    width: 100%;
+    border-radius: 5px;
+    height: 4px;
+background-color: crimson;
+}
+.card_item {
+    border:none;
+}
+.button_edit {
+    border: none;
+    width: 20px;
+    height: 20px;
+}
+.button_delete {
+    border: none;
+    width: 20px;
+    height: 20px;
+}
