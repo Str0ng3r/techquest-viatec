@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap');
+
 
 .cont_form {
   display: flex;
@@ -20,8 +21,8 @@
   margin-bottom: 14px;
 }
 .input_form {
-  font-family: Poppins;
-  font-size: 12px;
+  font-family: Roboto;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   border-radius: 6px;
@@ -34,8 +35,8 @@
 }
 
 .area_form {
-  font-family: Poppins;
-  font-size: 12px;
+  font-family: Roboto;
+  font-size: 16px;
   resize: none;
   font-style: normal;
   font-weight: 500;

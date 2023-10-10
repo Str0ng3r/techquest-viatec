@@ -55,7 +55,7 @@ export const Header = () => {
               <textarea
                 name="desc"
                 id="description"
-                cols="60"
+                cols="50"
                 rows="5"
                 placeholder="In 16:00 call to my Mom"
                 className={styles.area_form}
