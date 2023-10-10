@@ -20,6 +20,7 @@ export const Main = () => {
   const [currentName, setCurrentName] = useState(null);
   const [currentDescription, setCurrentDescription] = useState(null);
   const [currentStatus, setCurrentStatus] = useState(null);
+  const [filter,setFilter] = useState('All')
 
   const [showModal, setShowModal] = useState(false);
 
@@ -82,6 +83,30 @@ handleCloseModal();
   }, [notates]);
   return (
     <Container>
+
+<Form className="d-flex justify-content-center align-items-center flex-wrap">
+        <Form.Check
+          type="radio"
+          label="Done"
+          name="status"
+          onChange={()=> setFilter('Done')}
+        />
+        <Form.Check
+          type="radio"
+          label="Not Done"
+          name="status"
+          onChange={()=> setFilter('Not Done')}
+        />
+        <Form.Check
+          type="radio"
+          label="All"
+          name="status"
+          onChange={()=> setFilter('All')}
+        />
+      </Form>
+
+
+
       <ListGroup
         horizontal
         style={{
@@ -91,7 +116,14 @@ handleCloseModal();
           justifyContent: "center",
         }}
       >
-        {tasks.map((el) => (
+        {tasks
+          .filter(
+            (el) => {
+              if (filter === 'Done') return el.status === 'Done';
+              if (filter === 'Not Done') return el.status === 'Not Done';
+              return true;
+            }
+          ).map((el) => (
           <ListGroup.Item key={el.id} className={styles.card_item}>
             <Card style={{ width: "18rem", paddingTop: "20px" }}>
               <Card.Body>
@@ -192,7 +224,7 @@ handleCloseModal();
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Cancel</Button>
+          <Button variant="secondary" onClick={handleCloseModal}>Cancel</Button>
           <Button variant="primary" onClick={editCardFunc}>Edit notate</Button>
         </Modal.Footer>
       </Modal>
