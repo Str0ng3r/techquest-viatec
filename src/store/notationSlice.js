@@ -16,8 +16,11 @@ setDone(state,action) {
 },
 setNotDone(state,action) {
     state.notdone = [...state.notdone,...action.payload]
+},
+setUpdateNotate(state,action) {
+    state.notations = action.payload
 }
     }
 })
-export const {setDone,setNotDone,setNotate} = notationSlice.actions
+export const {setDone,setNotDone,setNotate,setUpdateNotate} = notationSlice.actions
 export default notationSlice.reducer;

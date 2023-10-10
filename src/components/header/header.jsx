@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, Navbar, Container, Button, Image,Form  } from "react-bootstrap";
+import { Modal, Navbar, Container, Button, Image, Form } from "react-bootstrap";
 import logo from "../../img/3889855_20230428145240.png";
 import { useState } from "react";
 import styles from "./header.module.css";
@@ -22,14 +22,14 @@ export const Header = () => {
         <Navbar.Brand>
           <Image src={logo} alt="LOGO" fluid></Image>
         </Navbar.Brand>
-          <Button
-            variant="success"
-            style={{ marginLeft: "50px" }}
-            onClick={handleShowModal}
-            size="lg"
-          >
-            Add Notate
-          </Button>
+        <Button
+          variant="success"
+          style={{ marginLeft: "50px" }}
+          onClick={handleShowModal}
+          size="lg"
+        >
+          Add Notate
+        </Button>
       </Container>
 
       <Modal show={showModal} onHide={handleCloseModal}>
@@ -56,7 +56,7 @@ export const Header = () => {
               <textarea
                 name="desc"
                 id="description"
-                cols="40"
+                cols="60"
                 rows="5"
                 placeholder="In 16:00 call to my Mom"
                 className={styles.area_form}
@@ -66,36 +66,26 @@ export const Header = () => {
                 }}
               ></textarea>
             </label>
-            <label htmlFor="status" className={styles.label_form}>
+            <label htmlFor="radio" className={styles.label_form}>
               Status
               <div className={styles.cont_form_status}>
-              <Form.Check
-      type="radio"
-      id="radio-done"
-      name="status"
-      label="Done"
-      checked={status === "Done"} // Проверка на выбор Done
-      onChange={() => setStatus("Done")}
-    />
-    <Form.Check
-      type="radio"
-      id="radio-not-done"
-      name="status"
-      label="Not Done"
-      checked={status === "Not Done"} // Проверка на выбор Not Done
-      onChange={() => setStatus("Not Done")}
-    />
-</div>
-              {/* <input
-                type="button"
-                id="status"
-                placeholder="Done or Not"
-                className={styles.input_form}
-                onChange={(evt) => {
-                  setStatus(evt.currentTarget.value);
-                  console.log(status);
-                }}
-              /> */}
+                <Form.Check
+                  type="radio"
+                  id="radio"
+                  name="status"
+                  label="Done"
+                  checked={status === "Done"} // Проверка на выбор Done
+                  onChange={() => setStatus("Done")}
+                />
+                <Form.Check
+                  type="radio"
+                  id="radio"
+                  name="status"
+                  label="Not Done"
+                  checked={status === "Not Done"} // Проверка на выбор Not Done
+                  onChange={() => setStatus("Not Done")}
+                />
+              </div>
             </label>
           </div>
         </Modal.Body>
@@ -119,10 +109,10 @@ export const Header = () => {
                   name: nameTask,
                   description,
                   status,
-                  id:nanoid()
+                  id: nanoid(),
                 })
               );
-              handleCloseModal()
+              handleCloseModal();
               setDescription(null);
               setNameTask(null);
               setStatus(null);
