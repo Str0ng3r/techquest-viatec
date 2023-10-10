@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/techquest-viatec/static/css/main.6c882730.css",
-    "main.js": "/techquest-viatec/static/js/main.e531b235.js",
+    "main.css": "/techquest-viatec/static/css/main.656afaab.css",
+    "main.js": "/techquest-viatec/static/js/main.13fd9cd3.js",
     "static/js/787.27d79c07.chunk.js": "/techquest-viatec/static/js/787.27d79c07.chunk.js",
     "static/media/edit.png": "/techquest-viatec/static/media/edit.a8b98c482b9f1c4b506f.png",
     "static/media/3889855_20230428145240.png": "/techquest-viatec/static/media/3889855_20230428145240.80c2795da711c4e3dd0e.png",
     "index.html": "/techquest-viatec/index.html",
-    "main.6c882730.css.map": "/techquest-viatec/static/css/main.6c882730.css.map",
-    "main.e531b235.js.map": "/techquest-viatec/static/js/main.e531b235.js.map",
+    "main.656afaab.css.map": "/techquest-viatec/static/css/main.656afaab.css.map",
+    "main.13fd9cd3.js.map": "/techquest-viatec/static/js/main.13fd9cd3.js.map",
     "787.27d79c07.chunk.js.map": "/techquest-viatec/static/js/787.27d79c07.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c882730.css",
-    "static/js/main.e531b235.js"
+    "static/css/main.656afaab.css",
+    "static/js/main.13fd9cd3.js"
   ]
 }
